@@ -1,22 +1,87 @@
-[
-  {
-    "unit": "R7-UG-01",
-    "customer": "ABC Pvt Ltd",
-    "business": "Capital Walk",
-    "crm": "Rahul",
-    "frm": "Amit",
-    "invoice": "01-06-2026",
-    "due": "15-06-2026",
-    "payable": "133500"
-  },
-  {
-    "unit": "R7-UG-02",
-    "customer": "XYZ Pvt Ltd",
-    "business": "Capital Walk",
-    "crm": "Neha",
-    "frm": "Priya",
-    "invoice": "03-06-2026",
-    "due": "18-06-2026",
-    "payable": "225000"
-  }
-]
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Excel to JSON Converter</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+
+<body>
+
+<h2>Select Final Demand OOP.xlsx</h2>
+
+<input type="file" id="excel">
+
+<script>
+
+document.getElementById("excel").addEventListener("change", function(e){
+
+    const file = e.target.files[0];
+
+    const reader = new FileReader();
+
+    reader.onload = function(evt){
+
+        const data = new Uint8Array(evt.target.result);
+
+        const workbook = XLSX.read(data,{type:"array"});
+
+        const sheet = workbook.Sheets["OOP Cases"] ||
+                      workbook.Sheets[workbook.SheetNames[0]];
+
+        const rows = XLSX.utils.sheet_to_json(sheet,{
+            header:1,
+            defval:""
+        });
+
+        const result=[];
+
+        for(let i=1;i<rows.length;i++){
+
+            const r=rows[i];
+
+            result.push({
+
+                unit:r[0],
+                customer:r[4],
+                oldbsp:r[18],
+                newbsp:r[25],
+                totalamount:r[41],
+                received:r[42],
+                interest:r[43],
+                payable:r[44],
+                invoice:r[58],
+                due:r[59],
+                crm:r[76],
+                frm:r[77]
+
+            });
+
+        }
+
+        const blob=new Blob(
+            [JSON.stringify(result,null,2)],
+            {type:"application/json"}
+        );
+
+        const a=document.createElement("a");
+
+        a.href=URL.createObjectURL(blob);
+
+        a.download="data.json";
+
+        a.click();
+
+    };
+
+    reader.readAsArrayBuffer(file);
+
+});
+
+</script>
+
+</body>
+
+</html>
+```
