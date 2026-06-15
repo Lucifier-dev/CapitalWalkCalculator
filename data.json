@@ -1,0 +1,22 @@
+[
+  {
+    "unit": "R7-UG-01",
+    "customer": "ABC Pvt Ltd",
+    "business": "Capital Walk",
+    "crm": "Rahul",
+    "frm": "Amit",
+    "invoice": "01-06-2026",
+    "due": "15-06-2026",
+    "payable": "133500"
+  },
+  {
+    "unit": "R7-UG-02",
+    "customer": "XYZ Pvt Ltd",
+    "business": "Capital Walk",
+    "crm": "Neha",
+    "frm": "Priya",
+    "invoice": "03-06-2026",
+    "due": "18-06-2026",
+    "payable": "225000"
+  }
+]

@@ -1,0 +1,114 @@
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Capital Walk Calculator</title>
+
+        <link rel="stylesheet" href="style.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <h1>Capital Walk Calculator</h1>
+
+            <!-- Upload File -->
+            <div class="card">
+    <label><b>Upload Excel File</b></label>
+    <input
+        type="file"
+        id="excelFile"
+        accept=".xlsx,.xls"
+        capture="environment">
+</div>
+  <!-- Search Unit -->
+            <div class="card">
+                <label><b>Search Unit Number</b></label>
+                <input
+                    type="text"
+                    id="unitSearch"
+                    placeholder="Enter Unit Number..."
+                    oninput="searchUnit()">
+            </div>
+
+            <!-- Customer Information -->
+            <div class="card">
+
+                <h2>Customer Information</h2>
+
+                <div class="row">
+                    <span>Customer Name</span>
+                    <span id="customer">-</span>
+                </div>
+
+                <div class="row">
+                    <span>Collection RM</span>
+                    <span id="crm">-</span>
+                </div>
+
+                <div class="row">
+                    <span>Frontend RM</span>
+                    <span id="frm">-</span>
+                </div>
+
+                <div class="row">
+                    <span>Invoice Date</span>
+                    <span id="invoice">-</span>
+                </div>
+
+                <div class="row">
+                    <span>Due Date</span>
+                    <span id="due">-</span>
+                </div>
+
+            </div>
+
+            <!-- Calculation Details -->
+            <div class="card">
+
+                <h2>Calculation Details</h2>
+
+                <div class="row">
+                    <span>Old BSP</span>
+                    <span id="oldbsp">₹0</span>
+                </div>
+
+                <div class="row">
+                    <span>New BSP</span>
+                    <span id="newbsp">₹0</span>
+                </div>
+
+                <div class="row">
+                    <span>Total Amount</span>
+                    <span id="totalamount">₹0</span>
+                </div>
+
+                <div class="row">
+                    <span>Total Received</span>
+                    <span id="received">₹0</span>
+                </div>
+
+                <div class="row">
+                    <span>Interest Due</span>
+                    <span id="interest">₹0</span>
+                </div>
+
+            </div>
+
+            <!-- Net Payable -->
+        <div class="payable">
+        <p>Net Payable Amount</p>
+        <h1 id="payable">₹0</h1>
+    </div>
+        
+        </div>
+
+        <script src="app.js"></script>
+
+    </body>
+        </html> 
